@@ -4,7 +4,7 @@
 	"description": "Easy note taking.",
 	"version": "1.0",
     "chrome_url_overrides" : {
-      "newtab" : "popup.html"
+      "newtab" : "notes.html"
     },
 	"permissions": [
 		"storage"
@@ -14,13 +14,10 @@
 		"48": "img/icon48.png",
 		"128": "img/icon128.png" 
 	},
-	"browser_action": {
-		"default_icon": {                    
-			"19": "img/icon48.png",          
-			"38": "img/icon48.png"          
-		},
-		"default_popup": "popup.html"
-	},
+    "browser_action": {
+      "default_icon": "img/icon16.png",
+      "default_popup": "popup.html"
+    },
 	"web_accessible_resources": [
 		"img/icon128.png"
 	]
