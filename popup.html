@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+		<meta name="description" content="A basic template for a Chrome Extension using Twitter Bootstrap 3">
+		<meta name="author" content="Elliot Hesp">
+		
+		<title>Chrome Extension with Twitter Bootstrap 3.0</title>
+		
+		<!-- Scripts -->
+		<script src="js/jquery-2.0.3.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		
+		<!-- Cascading Style Sheets -->
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="css/custom.css" rel="stylesheet" media="screen">		
+	</head>
+	
+	<body>
+ <textarea name="code" id="code">
+  </textarea>
+</br>
+</br>
+<center>
+  <button name="note" id="note" class="btn btn-primary">Submit Note</button>
+  <button name="clearAll" id="clearAll" class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete">Clear All Notes</button>
+</center>
+</br>
+</br>
+
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header alert-text">
+                Are you sure you want to delete all notes?
+            </div>
+            <div class="modal-body alert-text">
+              This action cannot be reversed.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a id="clearing" class="btn btn-danger btn-ok" data-dismiss="modal">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<style>
+.alert-text{
+  color: black !important;
+}
+
+.note_close{
+  background-color: transparent;
+  border: none;
+  float: right;
+  padding-top: 20px;
+  outline: none;
+}
+</style>
+
+<div id="user_notes"></div>
+<style>
+
+textarea {
+  margin-top: 10px;
+  margin-left: 50px;
+  width: 90%;
+  height: 300px;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+  border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+  border-image: none;
+  border-radius: 6px 6px 6px 6px;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+  color: #555555;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  line-height: 1.4em;
+  padding: 5px 8px;
+  transition: background-color 0.2s ease 0s;
+}
+
+
+textarea:focus {
+    background: none repeat scroll 0 0 #FFFFFF;
+    outline-width: 0;
+}
+
+
+body {
+	  font-family: lato,sans-serif;
+			  color: #bdc3c7;
+}
+
+code {
+	  display: inline-block;
+}
+
+body{
+	padding-top: 70px;
+	width:900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+p{
+	  font-size:17px;
+}
+
+</style>
+	
+		<script src="functions.js"></script>
+	</body>
+</html>
