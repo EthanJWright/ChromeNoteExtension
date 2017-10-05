@@ -10,12 +10,12 @@
 		"storage"
 	],
 	"icons": { 
-		"16": "img/icon16.png",
-		"48": "img/icon48.png",
-		"128": "img/icon128.png" 
+		"16": "icon/ic_mode_edit_black_18dp.png",
+		"48": "icon/ic_mode_edit_black_36dp.png",
+		"128": "icon/ic_mode_edit_black_48dp.png"
 	},
     "browser_action": {
-      "default_icon": "img/icon16.png",
+      "default_icon": "icon/ic_mode_edit_black_18dp.png",
       "default_popup": "popup.html"
     },
 	"web_accessible_resources": [
