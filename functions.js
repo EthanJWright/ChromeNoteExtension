@@ -6,13 +6,6 @@ searchUrbanDict = function(word){
     copyText(query);
 };
 
-chrome.contextMenus.create({
-    title: "Add As Note",
-    id: "note",
-    contexts:["selection"],
-    onclick: searchUrbanDict
-});
-
 $('#confirm-delete').on('show.bs.modal', function(e) {
       $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 });

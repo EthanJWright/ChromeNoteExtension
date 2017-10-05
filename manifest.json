@@ -23,6 +23,7 @@
       "default_popup": "popup.html"
     },
 	"web_accessible_resources": [
-		"img/icon128.png"
+		"img/icon128.png",
+        "*.ttf"
 	]
 }
