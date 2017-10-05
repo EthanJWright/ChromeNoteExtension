@@ -1,9 +1,33 @@
 document.getElementById("note").addEventListener("click", saveNote);
 document.getElementById("clearing").addEventListener("click", clearNotes);
 
+searchUrbanDict = function(word){
+    var query = word.selectionText;
+    copyText(query);
+};
+
+chrome.contextMenus.create({
+    title: "Add As Note",
+    id: "note",
+    contexts:["selection"],
+    onclick: searchUrbanDict
+});
+
 $('#confirm-delete').on('show.bs.modal', function(e) {
       $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 });
+
+function copyText(entered){
+  var stored = localStorage.getItem("notes");
+  if(entered.length > 0){
+    if(stored !== null){
+      localStorage.setItem("notes", entered + "{break}" + stored);
+    }else{
+      localStorage.setItem("notes", entered);
+    }
+  }
+}
+
 function loadNotes(){
   $("#user_notes").html('');
   var notes = localStorage.getItem("notes");

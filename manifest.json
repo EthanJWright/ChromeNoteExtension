@@ -6,8 +6,12 @@
     "chrome_url_overrides" : {
       "newtab" : "notes.html"
     },
+    "background": {
+      "scripts" : ["background.js"]
+    },
 	"permissions": [
-		"storage"
+		"storage",
+        "contextMenus"
 	],
 	"icons": { 
 		"16": "icon/ic_mode_edit_black_18dp.png",
