@@ -29,7 +29,7 @@ function loadNotes(){
     var count = 0;
     notes.forEach(function(element){
       if(element !== null){
-        $('#user_notes').append('<button value="' + count + '" id="' + count + 'button' + '" class="material-icons note_close">close</button><pre><code><xmp>' + element + '</xmp></code></pre>');
+        $('#user_notes').append('<button value="' + count + '" id="' + count + 'button' + '" class="material-icons note_close">close</button><pre><code><xmp class="breaker">' + element + '</xmp></code></pre>');
         document.getElementById(count + 'button').addEventListener("click", removeNote);
         count += 1;
       }
