@@ -1,10 +1,51 @@
+if(localStorage.getItem('saved')){
+  document.getElementById('code').value = localStorage.getItem('saved');
+  localStorage.removeItem("saved");
+}
+// add our keyamp from github
+var vimBinding = document.createElement('script');
+vimBinding.setAttribute('src', 'vim.js');
+ 
+ 
+// browser support for onload may be iffy ...
+vimBinding.onload = function () {
+  var vim = new VIM();
+
+  Array.prototype.forEach.call(document.querySelectorAll('textarea'), function (instance){
+      vim.attach_to(instance);
+  });
+};
+
+
+
+document.getElementById("vim").addEventListener("click", toggleVim);
 document.getElementById("note").addEventListener("click", saveNote);
 document.getElementById("clearing").addEventListener("click", clearNotes);
+
+if(localStorage.getItem('vim') == 'true'){
+  $('#vim').attr('checked', true);
+}
 
 searchUrbanDict = function(word){
     var query = word.selectionText;
     copyText(query);
 };
+
+function toggleVim(){
+  if(localStorage.getItem('vim')){
+    if(localStorage.getItem('vim') == 'true'){
+      localStorage.setItem('vim', 'false');
+      localStorage.setItem('saved', document.getElementById('code').value);
+      location.reload();
+    }else{
+      localStorage.setItem('vim', 'true');
+      document.body.appendChild(vimBinding);
+    }
+  }else{
+    localStorage.setItem('vim', 'false');
+    alert('vim not set')
+  }
+}
 
 $('#confirm-delete').on('show.bs.modal', function(e) {
       $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
