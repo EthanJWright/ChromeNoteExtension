@@ -16,7 +16,9 @@ vimBinding.onload = function () {
   });
 };
 
-
+if(localStorage.getItem('vim') == 'true'){
+  document.body.appendChild(vimBinding);
+}
 
 document.getElementById("vim").addEventListener("click", toggleVim);
 document.getElementById("note").addEventListener("click", saveNote);
