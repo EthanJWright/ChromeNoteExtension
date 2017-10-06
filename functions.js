@@ -29,11 +29,30 @@ function loadNotes(){
     var count = 0;
     notes.forEach(function(element){
       if(element !== null){
-        $('#user_notes').append('<button value="' + count + '" id="' + count + 'button' + '" class="material-icons note_close">close</button><pre><code><xmp class="breaker">' + element + '</xmp></code></pre>');
+        $('#user_notes').append('<button value="' + count + '" id="' + count + 'button' + '" class="material-icons note_close">close</button><button value="' + count + '" id="' + count + 'edit' + '" class="material-icons note_close">mode_edit</button><pre><code><xmp class="breaker">' + element + '</xmp></code></pre>');
         document.getElementById(count + 'button').addEventListener("click", removeNote);
+        document.getElementById(count + 'edit').addEventListener("click", editNote);
         count += 1;
       }
     });
+  }
+}
+
+function editNote(){
+  var count = this.value;
+  var stored = localStorage.getItem("notes");
+  if(stored !== null){
+    stored = stored.split("{break}");
+    var note = stored[count];
+    document.getElementById('code').value = note;
+    stored.splice(count, 1);
+    if(stored.length > 0){
+      stored = stored.join("{break}");
+      localStorage.setItem("notes", stored);
+    }else{
+      localStorage.removeItem("notes");
+    }
+    loadNotes();
   }
 }
 
