@@ -19,10 +19,14 @@ vimBinding.onload = function () {
 if(localStorage.getItem('vim') == 'true'){
   document.body.appendChild(vimBinding);
 }
-
+window.addEventListener("unload", saveCurrent);
 document.getElementById("vim").addEventListener("click", toggleVim);
 document.getElementById("note").addEventListener("click", saveNote);
 document.getElementById("clearing").addEventListener("click", clearNotes);
+
+function saveCurrent(){
+  localStorage.setItem('saved', document.getElementById('code').value);
+}
 
 if(localStorage.getItem('vim') == 'true'){
   $('#vim').attr('checked', true);
@@ -37,7 +41,7 @@ function toggleVim(){
   if(localStorage.getItem('vim')){
     if(localStorage.getItem('vim') == 'true'){
       localStorage.setItem('vim', 'false');
-      localStorage.setItem('saved', document.getElementById('code').value);
+      saveCurrent();
       location.reload();
     }else{
       localStorage.setItem('vim', 'true');
