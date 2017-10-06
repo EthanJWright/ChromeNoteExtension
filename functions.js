@@ -44,7 +44,11 @@ function editNote(){
   if(stored !== null){
     stored = stored.split("{break}");
     var note = stored[count];
-    document.getElementById('code').value = note;
+    if(document.getElementById('code').value.length > 0){
+      document.getElementById('code').value = document.getElementById('code').value + "\n" + note;
+    }else{
+      document.getElementById('code').value = note;
+    }
     stored.splice(count, 1);
     if(stored.length > 0){
       stored = stored.join("{break}");
