@@ -44,8 +44,8 @@ function toggleVim(){
       document.body.appendChild(vimBinding);
     }
   }else{
-    localStorage.setItem('vim', 'false');
-    alert('vim not set')
+    localStorage.setItem('vim', 'true');
+    document.body.appendChild(vimBinding);
   }
 }
 
