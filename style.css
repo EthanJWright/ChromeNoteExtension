@@ -1,3 +1,8 @@
+.completed{
+	text-decoration: line-through;
+	background-color: #DCEFD9;
+}
+
 .alert-text{
   color: black !important;
 }

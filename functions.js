@@ -76,7 +76,19 @@ function loadNotes(){
     var count = 0;
     notes.forEach(function(element){
       if(element !== null){
-        $('#user_notes').append('<button value="' + count + '" id="' + count + 'button' + '" class="material-icons note_close">close</button><button value="' + count + '" id="' + count + 'edit' + '" class="material-icons note_close">mode_edit</button><pre><code><xmp class="breaker">' + element + '</xmp></code></pre>');
+        done_button = '<button value="' + count + '" id="' + count + 'done' + '" class="material-icons note_close">done</button>';
+        close_button = '<button value="' + count + '" id="' + count + 'button' + '" class="material-icons note_close">close</button>';
+        edit_button = '<button value="' + count + '" id="' + count + 'edit' + '" class="material-icons note_close">mode_edit</button>';
+        if(element.includes("{completed}")){
+          element = element.replace("{completed}", "");
+          note_content = '<pre class="completed"><code><xmp class="breaker">' + element + '</xmp></code></pre>';
+        }else{
+          note_content = '<pre><code><xmp class="breaker">' + element + '</xmp></code></pre>'
+        }
+        note_structure = done_button + close_button + edit_button + note_content;
+
+        $('#user_notes').append(note_structure);
+        document.getElementById(count + 'done').addEventListener("click", completedNote);
         document.getElementById(count + 'button').addEventListener("click", removeNote);
         document.getElementById(count + 'edit').addEventListener("click", editNote);
         count += 1;
@@ -85,12 +97,32 @@ function loadNotes(){
   }
 }
 
+function completedNote(){
+  var count = this.value;
+  var stored = localStorage.getItem("notes");
+  if(stored !== null){
+    stored = stored.split("{break}");
+    if(!stored[count].includes("{completed}")){
+      stored[count] += "{completed}";
+      stored = stored.join("{break}");
+      localStorage.setItem("notes", stored);
+      loadNotes();
+    }else{
+      stored[count] = stored[count].replace("{completed}", "");
+      stored = stored.join("{break}");
+      localStorage.setItem("notes", stored);
+      loadNotes();
+      }
+    }
+}
+
 function editNote(){
   var count = this.value;
   var stored = localStorage.getItem("notes");
   if(stored !== null){
     stored = stored.split("{break}");
     var note = stored[count];
+    note = note.replace("{completed}", "");
     if(document.getElementById('code').value.length > 0){
       document.getElementById('code').value = document.getElementById('code').value + "\n" + note;
     }else{
