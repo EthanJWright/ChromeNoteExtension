@@ -3,6 +3,11 @@
 	background-color: #DCEFD9;
 }
 
+.completed-dark{
+	text-decoration: line-through;
+	background-color: #034748;
+}
+
 .alert-text{
   color: black !important;
 }

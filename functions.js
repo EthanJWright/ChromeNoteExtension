@@ -147,9 +147,13 @@ function loadNotes(){
         edit_button = '<button value="' + count + '" id="' + count + 'edit' + '" class="material-icons note_close">mode_edit</button>';
         if(element.includes("{completed}")){
           element = element.replace("{completed}", "");
-          note_content = '<pre class="completed"><code><xmp class="breaker">' + element + '</xmp></code></pre>';
+            var comp_class = "completed";
+            if ( is_darkmode ) {
+                comp_class = "completed-dark";
+            }
+          note_content = '<pre class="' + comp_class + '"><code id="' + count + 'contentscode"><xmp class="breaker">' + element + '</xmp></code></pre>';
         }else{
-						note_content = '<pre id="' + count + 'contentspre" ><code id="' + count + 'contentscode"><xmp class="breaker">' + element + '</xmp></code></pre>'
+			note_content = '<pre id="' + count + 'contentspre" ><code id="' + count + 'contentscode"><xmp class="breaker">' + element + '</xmp></code></pre>'
         }
         note_structure = done_button + close_button + edit_button + note_content;
 
