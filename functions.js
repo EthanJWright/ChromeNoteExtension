@@ -48,8 +48,8 @@ searchUrbanDict = function(word){
 
 function darkmodeOn() {
 		is_darkmode = true;
-		console.log(`in darkmode on`);
 		$('body').addClass('darkmode-main');
+		$('#dm-enable-text').addClass('darkmode-contrast');
 		$('#vim-enable-text').addClass('darkmode-contrast');
 		$('#code').addClass('darkmode-second');
 
