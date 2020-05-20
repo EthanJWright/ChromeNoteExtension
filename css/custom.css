@@ -18,3 +18,11 @@
 .darkmode-contrast {
 		color: #598392;
 }
+
+#switch-wrapper {
+		display: flex;
+}
+
+.dm-switch-css {
+		padding-right: 20px;
+}

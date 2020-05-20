@@ -21,6 +21,7 @@ if(localStorage.getItem('vim') == 'true'){
 }
 
 var num_notes = 0;
+var is_darkmode = false;
 
 window.addEventListener("unload", saveCurrent);
 document.getElementById("vim").addEventListener("click", toggleVim);
@@ -46,12 +47,13 @@ searchUrbanDict = function(word){
 };
 
 function darkmodeOn() {
+		is_darkmode = true;
 		console.log(`in darkmode on`);
 		$('body').addClass('darkmode-main');
 		$('#vim-enable-text').addClass('darkmode-contrast');
 		$('#code').addClass('darkmode-second');
 
-		for ( var i = 0; i < num_notes; i++ ) {
+		for ( var i = 0; i <= num_notes; i++ ) {
 				$(`#${i}done`).addClass('darkmode-contrast');
 				$(`#${i}button`).addClass('darkmode-contrast');
 				$(`#${i}edit`).addClass('darkmode-contrast');
@@ -61,6 +63,7 @@ function darkmodeOn() {
 }
 
 function darkmodeOff() {
+		is_darkmode = false;
 		$('body').removeClass('darkmode-main');
 		$('#dm-enable-text').removeClass('darkmode-contrast');
 		$('#vim-enable-text').removeClass('darkmode-contrast');
@@ -158,6 +161,7 @@ function loadNotes(){
       }
     });
 			num_notes = count;
+		  if ( is_darkmode ) { darkmodeOn(); }
   }
 }
 
