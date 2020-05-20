@@ -1,1 +1,20 @@
+.darkmode-main {
+		background-color: #001021;
+}
 
+.darkmode-second {
+		background-color: #0B3142;
+		color: #598392;
+}
+
+.darkmode-second:focus {
+		background-color: #034748;
+}
+
+.darkmode-third {
+		background-color: #0B3142;
+}
+
+.darkmode-contrast {
+		color: #598392;
+}

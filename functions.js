@@ -19,8 +19,12 @@ vimBinding.onload = function () {
 if(localStorage.getItem('vim') == 'true'){
   document.body.appendChild(vimBinding);
 }
+
+var num_notes = 0;
+
 window.addEventListener("unload", saveCurrent);
 document.getElementById("vim").addEventListener("click", toggleVim);
+document.getElementById("darkmode").addEventListener("click", toggleDarkmode);
 document.getElementById("note").addEventListener("click", saveNote);
 document.getElementById("clearing").addEventListener("click", clearNotes);
 
@@ -32,14 +36,72 @@ if(localStorage.getItem('vim') == 'true'){
   $('#vim').attr('checked', true);
 }
 
+if(localStorage.getItem('darkmode') == 'true'){
+  $('#darkmode').attr('checked', true);
+}
+
 searchUrbanDict = function(word){
     var query = word.selectionText;
     copyText(query);
 };
 
+function darkmodeOn() {
+		console.log(`in darkmode on`);
+		$('body').addClass('darkmode-main');
+		$('#vim-enable-text').addClass('darkmode-contrast');
+		$('#code').addClass('darkmode-second');
+
+		for ( var i = 0; i < num_notes; i++ ) {
+				$(`#${i}done`).addClass('darkmode-contrast');
+				$(`#${i}button`).addClass('darkmode-contrast');
+				$(`#${i}edit`).addClass('darkmode-contrast');
+				$(`#${i}contentscode`).addClass('darkmode-contrast');
+				$(`#${i}contentspre`).addClass('darkmode-third');
+		}
+}
+
+function darkmodeOff() {
+		$('body').removeClass('darkmode-main');
+		$('#dm-enable-text').removeClass('darkmode-contrast');
+		$('#vim-enable-text').removeClass('darkmode-contrast');
+		$('#code').removeClass('darkmode-second');
+
+		for ( var i = 0; i < num_notes; i++ ) {
+				$(`#${i}done`).removeClass('darkmode-contrast');
+				$(`#${i}button`).removeClass('darkmode-contrast');
+				$(`#${i}edit`).removeClass('darkmode-contrast');
+				$(`#${i}contentscode`).removeClass('darkmode-contrast');
+				$(`#${i}contentspre`).removeClass('darkmode-third');
+		}
+
+}
+
+if(localStorage.getItem('darkmode') == 'true'){
+		darkmodeOn();
+}
+
+function toggleDarkmode() {
+		console.log(`in toggle darkmode`);
+		if(localStorage.getItem('darkmode')){
+				if(localStorage.getItem('darkmode') === 'true') {
+						localStorage.setItem('darkmode', 'false');
+						saveCurrent();
+						// turn off darkmode
+						darkmodeOff();
+				} else {
+						localStorage.setItem('darkmode', 'true');
+						darkmodeOn();
+				}
+		}else {
+				localStorage.setItem('darkmode', 'true');
+				darkmodeOn();
+		}
+}
+
+
 function toggleVim(){
   if(localStorage.getItem('vim')){
-    if(localStorage.getItem('vim') == 'true'){
+    if(localStorage.getItem('vim') === 'true'){
       localStorage.setItem('vim', 'false');
       saveCurrent();
       location.reload();
@@ -52,6 +114,7 @@ function toggleVim(){
     document.body.appendChild(vimBinding);
   }
 }
+
 
 $('#confirm-delete').on('show.bs.modal', function(e) {
       $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
@@ -83,7 +146,7 @@ function loadNotes(){
           element = element.replace("{completed}", "");
           note_content = '<pre class="completed"><code><xmp class="breaker">' + element + '</xmp></code></pre>';
         }else{
-          note_content = '<pre><code><xmp class="breaker">' + element + '</xmp></code></pre>'
+						note_content = '<pre id="' + count + 'contentspre" ><code id="' + count + 'contentscode"><xmp class="breaker">' + element + '</xmp></code></pre>'
         }
         note_structure = done_button + close_button + edit_button + note_content;
 
@@ -94,6 +157,7 @@ function loadNotes(){
         count += 1;
       }
     });
+			num_notes = count;
   }
 }
 

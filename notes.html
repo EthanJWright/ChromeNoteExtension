@@ -14,15 +14,21 @@
 		
 		<!-- Cascading Style Sheets -->
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
 	</head>
 	
-	<body>
-	   <p>Enable Vim</p>
+	<body >
+	   <p id="dm-enable-text">Enable Darkmode</p>
+<label class="switch">
+	  <input id='darkmode' type="checkbox">
+		  <span class="slider round"></span>
+</label>
+	   <p id="vim-enable-text">Enable Vim</p>
 <label class="switch">
 	  <input id='vim' type="checkbox">
 		  <span class="slider round"></span>
 </label>
- <textarea name="code" id="code"></textarea>
+ <textarea name="code" id="code" ></textarea>
 </br>
 </br>
 <center>
