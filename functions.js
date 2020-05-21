@@ -59,6 +59,10 @@ function darkmodeOn() {
 				$(`#${i}edit`).addClass('darkmode-contrast');
 				$(`#${i}contentscode`).addClass('darkmode-contrast');
 				$(`#${i}contentspre`).addClass('darkmode-third');
+
+				// completed notes
+				$(`#${i}completedcontentspre`).removeClass('completed');
+				$(`#${i}completedcontentspre`).addClass('completed-dark');
 		}
 }
 
@@ -75,6 +79,10 @@ function darkmodeOff() {
 				$(`#${i}edit`).removeClass('darkmode-contrast');
 				$(`#${i}contentscode`).removeClass('darkmode-contrast');
 				$(`#${i}contentspre`).removeClass('darkmode-third');
+
+				// completed notes
+				$(`#${i}completedcontentspre`).removeClass('completed-dark');
+				$(`#${i}completedcontentspre`).addClass('completed');
 		}
 
 }
@@ -151,7 +159,7 @@ function loadNotes(){
             if ( is_darkmode ) {
                 comp_class = "completed-dark";
             }
-          note_content = '<pre class="' + comp_class + '"><code id="' + count + 'contentscode"><xmp class="breaker">' + element + '</xmp></code></pre>';
+          note_content = '<pre id="' + count + 'completedcontentspre""><code id="' + count + 'contentscode"><xmp class="breaker">' + element + '</xmp></code></pre>';
         }else{
 			note_content = '<pre id="' + count + 'contentspre" ><code id="' + count + 'contentscode"><xmp class="breaker">' + element + '</xmp></code></pre>'
         }

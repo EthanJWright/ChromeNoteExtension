@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Quick Note",
 	"description": "Open a new tab to edit or view your notes. Copy text to notes, open drop down on any page. Vim integration for developers.",
-	"version": "1.16",
+	"version": "1.18",
     "applications": {
         "gecko": {
             "id": "ext@ewright362.org"
